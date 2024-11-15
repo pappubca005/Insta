@@ -5,8 +5,9 @@
 <div class="down-sec mt-3 d-flex flex-column align-items-center">
 
     <div class="yt-thumb d-flex flex-column align-items-center">
-        <a href="https://youtu.be/K4DyBUG242c" target="_blank">
-            <img src="{{thumbnail}}" alt="thumbnail" width="300" height="180">
+        <a href={{thumbnail}} target="_blank">
+            <!-- <a href="https://youtu.be/K4DyBUG242c" target="_blank"> -->
+            <img src="{{ MEDIA_URL }}{{ imgID }}" alt="thumbnail" width="300" height="180">
         </a>
         <h2 class="mt-3 mb-4 mx-2">{{title}}</h2>
     </div>
@@ -28,8 +29,8 @@
                 <form action="/download/" method="post" class="form">
                     {% csrf_token %}
                     <tr>
-                        <td>{{i.0.mime_type}}</td>
-                        <td>{{i.0.resolution}} ({{i.1}}MB)</td>
+                        <td>{{i.id}}</td>
+                        <td>{{i.desc}} ({{i.1}}MB)</td>
                         <input type="hidden" name="url" value="{{url}}">
                         <input type="hidden" name="itag" value="{{i.0.itag}}">
                         <td><button class="btn btn-success btn-sm" type="submit">Download</button></td>
